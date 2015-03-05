@@ -18,7 +18,6 @@ void table(string p){
     //v[i] :where to go(what to compare next) if mismatch occur at i
     v[0]=0;  //obviously we'll stay at zero only even if its a mismatch
     v[1]=0;  //just think naturally where will u go if mismatch occur at 1
-    lld zeros = 2;
     lld cur=0;
     for(lld j=2;j<length;j++){
         /*
@@ -29,18 +28,23 @@ void table(string p){
         while(cur!=0 && p[cur]!=p[j-1])
             cur=v[cur];
  
-        if(p[cur]==p[j-1]) //Case for match:length of prematched sequence increments by 1
+        if(p[cur]==p[j-1])
             cur=cur+1;
  
         v[j]=cur;
-        if(v[j]==0){
-            zeros++;
-        }
+        
     }
 
-    if(zeros+v[length-1]==length){
-        lld length_substring = zeros-1;
-        cout << length/length_substring << endl;
+    lld length_substring = length - v[length-1]-1;
+    if(length==1){
+        cout << "1" << endl;
+    }
+    else if( length_substring!=1 && length%length_substring==0){
+        lld solution = length/length_substring;
+        cout << solution << endl;
+    }
+    else if((length_substring==1 && p[0]==p[length-1])){
+        cout << length << endl;
     }
     else{
         cout << "1" << endl;
