@@ -15,7 +15,7 @@ int main(){
 
 		string palindrome;
 		cin >> palindrome;
-		int length = palindrome.length();
+	       unsigned int length = palindrome.length();
 
 		//need to make it uniform at both ends
 		//start copying from the start till the end
